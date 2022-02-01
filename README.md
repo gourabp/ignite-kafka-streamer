@@ -1,9 +1,13 @@
 # ignite-kafka-streamer
 Demo project for Kafka Ignite streamer, Kafka as source and Ignite cache as sink
 
-Step-1) Both Zookeeper and Kafka UP and running.
+Step-1) Run both Zookeeper and Kafka using the docker-compose file provided in the root of the project. (go to that directory and run following command)
 
-gourabpattanayak@Gourabs-MBP ignite-kafka-streamer-demo % docker compose ps                                                                                                                                                                             
+ignite-kafka-streamer-demo % docker compose up                                                                                                                   
+
+verify both verify both Zookeeper and Kafka running by executing following command.
+
+ignite-kafka-streamer-demo % docker compose ps                                                                                                                                                                             
 
 NAME                                     COMMAND                  SERVICE             STATUS              PORTS
 
@@ -13,13 +17,10 @@ ignite-kafka-streamer-demo-zookeeper-1   "/opt/bitnami/script…"   zookeeper   
 
 
 
+Step-2) Verify the topic exists by running following docker command.
 
 
-Step-2) Verify the topic exists
-
-
-
-gourabpattanayak@Gourabs-MBP ignite-kafka-streamer-demo % docker exec -it ignite-kafka-streamer-demo-kafka-1  kafka-topics.sh --describe --topic test-topic --bootstrap-server localhost:9092
+ignite-kafka-streamer-demo % docker exec -it ignite-kafka-streamer-demo-kafka-1  kafka-topics.sh --describe --topic test-topic --bootstrap-server localhost:9092
 
 Topic: test-topic	TopicId: jGDuAm3JS5es7l-tO1mwzQ	PartitionCount: 4	ReplicationFactor: 1	Configs: segment.bytes=1073741824
 
@@ -33,11 +34,7 @@ Topic: test-topic	TopicId: jGDuAm3JS5es7l-tO1mwzQ	PartitionCount: 4	ReplicationF
 
 
 
- 
-
-
-
-Step-3)  Ignite Server started with config under the : 
+Step-3)  Bring up Ignite Server with the config provided under the cluster_config directory: 
 
 [23:05:35] Ignite node started OK (id=6d27bba6)
 
@@ -47,8 +44,7 @@ Step-3)  Ignite Server started with config under the :
 
 
 
-Step-4) Verified the partitioned cache got created 
-
+Step-4) Verify the partitioned cache got created from visor 
 
 
 visor> cache
@@ -71,10 +67,9 @@ Time of the snapshot: 2022-01-31 23:22:08
 
 
 
+Step-5) Make sure the Ignite Kafka Server application started which joined as a member
 
-
-Step-5) Ignite Kafka Server application started which joined as a member
-
+Run the MyKafkaStreamer.java
 
 
 23:06:02] Topology snapshot [ver=2, locNode=60fed73e, servers=2, clients=0, state=ACTIVE, CPUs=10, offheap=13.0GB, heap=14.0GB]
@@ -103,7 +98,7 @@ Ignite server recognized additional node as well (one started in step1)
 [23:15:41]   ^-- Baseline [id=0, size=2, online=2, offline=0]
 
 
-Following is the Kafka consumer logs from the Ignite Streamer.
+You should see Following the Kafka consumer config in the startup log of MyKafkaStreamer.
 .....
 [main] INFO org.apache.kafka.clients.consumer.ConsumerConfig - ConsumerConfig values:
 allow.auto.create.topics = true
@@ -209,7 +204,7 @@ ignite-kafka-streamer-demo-kafka-1      | [2022-02-01 04:36:51,342] INFO [GroupC
 
 
 
-Step-7 : Started a kafka console producer for topic topic "test-topic" and published some messages as follows :
+Step-7 : Start a kafka console producer for topic topic "test-topic" and published some messages as follows :
 
 gourabpattanayak@Gourabs-MBP ignite-kafka-streamer-demo % docker exec -it ignite-kafka-streamer-demo-kafka-1 kafka-console-producer.sh --topic test-topic --property "parse.key=true" --property "key.separator=:"  --bootstrap-server localhost:9092
 

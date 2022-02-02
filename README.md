@@ -1,7 +1,10 @@
 # ignite-kafka-streamer
+
+**Description :
+
 Demo project for Kafka Ignite streamer, Kafka as source and Ignite cache as sink
 
-Step-1) Run both Zookeeper and Kafka using the docker-compose file provided in the root of the project. (go to that directory and run following command)
+**Step-1)** Run both Zookeeper and Kafka using the docker-compose file provided in the root of the project. (go to that directory and run following command)
 
 ignite-kafka-streamer-demo % docker compose up                                                                                                                   
 
@@ -17,8 +20,16 @@ ignite-kafka-streamer-demo-zookeeper-1   "/opt/bitnami/script…"   zookeeper   
 
 
 
-Step-2) Verify the topic exists by running following docker command.
+**Step-2)**  Create the topic and verify the topic exists by running following docker commands.
 
+
+**Create the topic **
+
+docker-compose exec kafka kafka-topics -create --topic test-topic --bootstrap-server localhost:29092 --replication-factor 1 --partitions 4
+
+
+**verify the topic 
+**
 
 ignite-kafka-streamer-demo % docker exec -it ignite-kafka-streamer-demo-kafka-1  kafka-topics.sh --describe --topic test-topic --bootstrap-server localhost:9092
 

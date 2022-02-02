@@ -28,6 +28,8 @@ ignite-kafka-streamer-demo-zookeeper-1   "/opt/bitnami/script…"   zookeeper   
 
 docker exec ignite-kafka-streamer-demo-kafka-1 kafka-topics.sh --create --topic test-topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 4
 
+you should see following message :
+Created topic test-topic.
 
 
 verify the topic 

@@ -23,13 +23,13 @@ ignite-kafka-streamer-demo-zookeeper-1   "/opt/bitnami/script…"   zookeeper   
 **Step-2)**  Create the topic and verify the topic exists by running following docker commands.
 
 
-**Create the topic **
+**Create the topic 
+**
 
 docker-compose exec kafka kafka-topics -create --topic test-topic --bootstrap-server localhost:29092 --replication-factor 1 --partitions 4
 
 
-**verify the topic 
-**
+verify the topic 
 
 ignite-kafka-streamer-demo % docker exec -it ignite-kafka-streamer-demo-kafka-1  kafka-topics.sh --describe --topic test-topic --bootstrap-server localhost:9092
 

@@ -52,7 +52,10 @@ Topic: test-topic	TopicId: jGDuAm3JS5es7l-tO1mwzQ	PartitionCount: 4	ReplicationF
 
 
 
-**Step-3)  **Bring up Ignite Server with the config provided under the cluster_config directory: 
+**Step-3)**
+
+
+Bring up Ignite Server with the config provided under the cluster_config directory: 
 
 
 
@@ -64,7 +67,9 @@ Topic: test-topic	TopicId: jGDuAm3JS5es7l-tO1mwzQ	PartitionCount: 4	ReplicationF
 
 
 
-**Step-4)**Verify the partitioned cache got created from visor 
+**Step-4)**
+
+Verify the partitioned cache got created from visor 
 
 
 visor> cache

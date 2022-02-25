@@ -57,6 +57,17 @@ Topic: test-topic	TopicId: jGDuAm3JS5es7l-tO1mwzQ	PartitionCount: 4	ReplicationF
 
 Bring up Ignite Server with the config provided under the cluster_config directory: 
 
+-> if ignite not there in your machine download ignite
+-> set the JAVA_HOME and IGNITE_HOME
+     
+     
+     export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home
+     export IGNITE_HOME=~/work/setup/apache-ignite-2.11.1-bin  
+
+Then Run the following command :
+       
+   $IGNITE_HOME/bin/ignite.sh $IGNITE_HOME/examples/config/ignite-cluster-1.xml
+      
 
 
 [23:05:35] Ignite node started OK (id=6d27bba6)

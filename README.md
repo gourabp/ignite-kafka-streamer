@@ -4,7 +4,9 @@
 
 Demo project for Kafka Ignite streamer, Kafka as source and Ignite cache as sink
 
-**Step-1)** Run both Zookeeper and Kafka using the docker-compose file provided in the root of the project. (go to that directory and run following command)
+**Step-1)** 
+
+Run both Zookeeper and Kafka using the docker-compose file provided in the root of the project. (go to that directory and run following command)
 
 ignite-kafka-streamer-demo % docker compose up                                                                                                                   
 
@@ -20,7 +22,9 @@ ignite-kafka-streamer-demo-zookeeper-1   "/opt/bitnami/script…"   zookeeper   
 
 
 
-**Step-2)**  Create the topic and verify the topic exists by running following docker commands.
+**Step-2)**  
+
+Create the topic and verify the topic exists by running following docker commands.
 
 
 **Create the topic 
@@ -48,7 +52,9 @@ Topic: test-topic	TopicId: jGDuAm3JS5es7l-tO1mwzQ	PartitionCount: 4	ReplicationF
 
 
 
-Step-3)  Bring up Ignite Server with the config provided under the cluster_config directory: 
+**Step-3)  **Bring up Ignite Server with the config provided under the cluster_config directory: 
+
+
 
 [23:05:35] Ignite node started OK (id=6d27bba6)
 
@@ -58,7 +64,7 @@ Step-3)  Bring up Ignite Server with the config provided under the cluster_confi
 
 
 
-Step-4) Verify the partitioned cache got created from visor 
+**Step-4)**Verify the partitioned cache got created from visor 
 
 
 visor> cache

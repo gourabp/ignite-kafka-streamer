@@ -277,6 +277,13 @@ Time of the snapshot: 2022-02-01 01:04:05
 
 
 
+**================================Additional notes======================
+**
+You can install Kafka toolset. https://formulae.brew.sh/formula/kafka#default 
+
+The tools will be installed in:
+/opt/homebrew/Cellar
+
 
 
 

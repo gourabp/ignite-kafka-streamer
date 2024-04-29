@@ -1,6 +1,6 @@
 # ignite-kafka-streamer
 
-**Description :
+**Description**
 
 Demo project for Kafka Ignite streamer, Kafka as source and Ignite cache as sink
 

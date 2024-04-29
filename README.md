@@ -1,8 +1,16 @@
 # ignite-kafka-streamer
 
-**Description**
+## Description
 
-Demo project for Kafka Ignite streamer, Kafka as source and Ignite cache as sink
+This demo project showcases the integration between Apache Kafka as a data source and Apache Ignite as a sink. It provides an example of real-time data streaming from Kafka into an Ignite cache for distributed processing and querying.
+
+## Prerequisites
+
+- Docker and Docker Compose
+- Apache Ignite and Kafka installations or their Docker images
+- Java environment for running Ignite and custom applications
+
+## Setup and Usage
 
 **Step-1)** 
 
@@ -27,8 +35,7 @@ ignite-kafka-streamer-demo-zookeeper-1   "/opt/bitnami/script…"   zookeeper   
 Create the topic and verify the topic exists by running following docker commands.
 
 
-**Create the topic 
-**
+**Create the topic**
 
 docker exec ignite-kafka-streamer-demo-kafka-1 kafka-topics.sh --create --topic test-topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 4
 
@@ -103,7 +110,7 @@ Time of the snapshot: 2022-01-31 23:22:08
 
 
 
-Step-5) Make sure the Ignite Kafka Server application started which joined as a member
+**Step-5)** Make sure the Ignite Kafka Server application started which joined as a member
 
 Run the MyKafkaStreamer.java
 
@@ -230,7 +237,7 @@ ssl.truststore.type = JKS
 value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
 [main] INFO org.apache.kafka.common.utils.AppInfoParser - Kafka version: 3.1.0
 
-Step-6)  Ignite Streamer app with id gpdev1 joined as a consumer (logs from KAFKA console)
+**Step-6)**  Ignite Streamer app with id gpdev1 joined as a consumer (logs from KAFKA console)
 
 : Stabilized group gpdev1 generation 2 (__consumer_offsets-23) with 4 members (kafka.coordinator.group.GroupCoordinator)
 
@@ -240,7 +247,7 @@ ignite-kafka-streamer-demo-kafka-1      | [2022-02-01 04:36:51,342] INFO [GroupC
 
 
 
-Step-7 : Start a kafka console producer for topic topic "test-topic" and published some messages as follows :
+**Step-7** : Start a kafka console producer for topic topic "test-topic" and published some messages as follows :
 
 gourabpattanayak@Gourabs-MBP ignite-kafka-streamer-demo % docker exec -it ignite-kafka-streamer-demo-kafka-1 kafka-console-producer.sh --topic test-topic --property "parse.key=true" --property "key.separator=:"  --bootstrap-server localhost:9092
 
@@ -248,14 +255,14 @@ gourabpattanayak@Gourabs-MBP ignite-kafka-streamer-demo % docker exec -it ignite
 >demokey1:demovalue1
 
 
-Step-8 : I can see the Ignite Kafka Streamer got the message and the MyStreamExtractor class also able to read the ConsumerRecord and able to print the message as follows:
+**Step-8** : I can see the Ignite Kafka Streamer got the message and the MyStreamExtractor class also able to read the ConsumerRecord and able to print the message as follows:
 
 
 
 ###############ConsumerRecord topic name:test-topic key :demokey1 and value :demovalue1
 
 
-Step-9 At this point expectation is the cache "mydemocache" should have entries for the key/value pairs published to Kafka Topic , so verify from the visor tool.
+**Step-9** At this point expectation is the cache "mydemocache" should have entries for the key/value pairs published to Kafka Topic , so verify from the visor tool.
 
 visor> cache
 
